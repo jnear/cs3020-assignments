@@ -5,7 +5,7 @@ import subprocess
 from compiler import run_compiler
 from rvar_parser import parse_rvar
 from interpreter import eval_rvar
-from cs202_support import eval_x86
+from cs3020_support import eval_x86
 
 # Pass the --run-gcc option to this file to run your compiled files in hardware
 # You must compile the runtime first and place it in the parent directory

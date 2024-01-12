@@ -5,8 +5,8 @@ import sys
 import itertools
 import traceback
 
-from cs202_support.python import *
-import cs202_support.x86 as x86
+from cs3020_support.python import *
+import cs3020_support.x86 as x86
 import constants
 from interference_graph import InterferenceGraph
 

@@ -1,7 +1,7 @@
 from typing import List, Set, Dict, Tuple, DefaultDict
 from collections import defaultdict
-import cs202_support.x86 as x86
-from cs202_support.python import print_ast
+import cs3020_support.x86 as x86
+from cs3020_support.python import print_ast
 
 class InterferenceGraph:
     """

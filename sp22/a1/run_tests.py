@@ -7,7 +7,7 @@ import sys
 import subprocess
 from compiler import run_compiler
 from interpreter import eval_Lmin
-from cs202_support import eval_x86
+from cs3020_support import eval_x86
 
 # Pass the --run-gcc option to this file to run your compiled files in hardware
 # You must compile the runtime first and place it in the parent directory

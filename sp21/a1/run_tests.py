@@ -2,7 +2,7 @@ import os
 from compiler import run_compiler
 from r0_parser import parse_rvar
 from interpreter import eval_rvar
-from cs202_support import eval_x86
+from cs3020_support import eval_x86
 
 
 for file_name in sorted(os.listdir('tests')):

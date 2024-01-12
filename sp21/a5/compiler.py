@@ -8,9 +8,9 @@ from typed_rvec import *
 
 import sys
 
-from cs202_support.base_ast import AST, print_ast
+from cs3020_support.base_ast import AST, print_ast
 
-import cs202_support.x86exp as x86
+import cs3020_support.x86exp as x86
 import cvec
 import constants
 

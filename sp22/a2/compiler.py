@@ -4,9 +4,9 @@ from typing import List, Set, Dict, Tuple
 import sys
 import traceback
 
-from cs202_support.base_ast import print_ast
+from cs3020_support.base_ast import print_ast
 
-import cs202_support.x86exp as x86
+import cs3020_support.x86exp as x86
 
 gensym_num = 0
 

@@ -1,4 +1,4 @@
-# CS202 Assignment Code and Support
+# CS 3020 Assignment Code and Support
 
 We will be implementing our compilers in Python. This repository
 contains the support code and assignment scaffolding you will need.
@@ -24,32 +24,32 @@ versions are also supported, you can find more information in the [python formul
 brew install python@3.10
 ```
 
-## Creating the CS202 Environment
+## Creating the CS 3020 Environment
 
-Python version 3.10 is required for CS202 (to support pattern
-matching). I recommend creating a fresh Conda environment for CS202,
+Python version 3.10 is required for CS 3020 (to support pattern
+matching). I recommend creating a fresh Conda environment for CS 3020,
 to ensure you have the right version of Python and the appropriate
 libraries. You can create the environment as follows:
 
 1. Open a terminal with Conda support. On Windows, launch "Anaconda
    Prompt"; on Linux or MacOS, launch a regular terminal.
-2. To create the environment, type: `conda create -n cs202 python=3.10`
-3. To activate the environment, type `conda activate cs202`. The
-   prompt's prefix should change from `(base)` to `(cs202)`.
+2. To create the environment, type: `conda create -n cs3020 python=3.10`
+3. To activate the environment, type `conda activate cs3020`. The
+   prompt's prefix should change from `(base)` to `(cs3020)`.
 
 ## Installing the Support Code
 
-You can install the support code for CS202 using `pip`:
+You can install the support code for CS 3020 using `pip`:
 
 1. Open a terminal with Conda support (as above)
-2. Activate the Conda env: `conda activate cs202`
-3. Install the code: `pip install git+https://github.com/jnear/cs202-assignments.git`
+2. Activate the Conda env: `conda activate cs3020`
+3. Install the code: `pip install git+https://github.com/jnear/cs3020-assignments.git`
 
 Alternatively, if you have cloned the repository on your computer:
 
 1. Open a terminal with Conda support (as above)
-2. Activate the Conda env: `conda activate cs202`
-3. Navigate to the `cs202-assignments` directory (e.g. using the `cd` command)
+2. Activate the Conda env: `conda activate cs3020`
+3. Navigate to the `cs3020-assignments` directory (e.g. using the `cd` command)
 4. Install the code: `pip install .`
 
 ## Installing and Using PyCharm
@@ -66,19 +66,19 @@ You can set up PyCharm to work with your Conda environment as follows:
 2. Select the directory where you checked out this repo (if you're
    asked to create a virtual env, click "cancel")
 3. Open Settings (File -> Settings, or PyCharm -> Preferences on MacOS)
-4. Open the "Project: cs202-assignments" -> "Python Interpreter"
+4. Open the "Project: cs3020-assignments" -> "Python Interpreter"
    section of the settings
 5. Click the settings gear icon next to the "Python Interpreter"
    drop-down box, and click "Add"
 6. On the left side, select "Conda Environment"
 7. Click the "Existing Environment" option
-8. In the "Interpreter" drop-down, pick the cs202 environment that you
+8. In the "Interpreter" drop-down, pick the cs3020 environment that you
    created earlier
 9. Click "OK" twice
    
-If the cs202 environment doesn't appear (step 8), click the "open"
+If the cs3020 environment doesn't appear (step 8), click the "open"
 button next to the drop-down and select the Python executable in the
-cs202 environment. You can find its location by typing `conda env
+cs3020 environment. You can find its location by typing `conda env
 list` at a Conda-enabled terminal. This command lists all environments
 and their location. The Python executable for an environment can be
 found at `bin/python` in that environment's directory.
@@ -186,11 +186,11 @@ assignments.
 
 ## Useful Tips
 
-To install the CS202 support code *inside* a Jupyter notebook, put the
+To install the CS 3020 support code *inside* a Jupyter notebook, put the
 following code in a cell and run it:
 
 ```
-!pip install git+https://github.com/jnear/cs202-assignments
+!pip install git+https://github.com/jnear/cs3020-assignments
 ```
 
 If you try to run `jupyter notebook` in your Conda environment, and

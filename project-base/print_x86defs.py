@@ -1,5 +1,5 @@
 from typing import Set, Dict, Tuple, List
-import cs202_support.x86 as x86
+import cs3020_support.x86 as x86
 
 def print_x86_defs(program) -> str:
     """

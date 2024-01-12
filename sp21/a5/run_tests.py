@@ -5,7 +5,7 @@ import subprocess
 from compiler import run_compiler
 from rvec_parser import parse_rvec
 from interpreter import eval_rvec
-from cs202_support import eval_x86
+from cs3020_support import eval_x86
 
 # Pass the --run-gcc option to this file to run your compiled files in hardware
 # You must compile the runtime first and place it in the parent directory

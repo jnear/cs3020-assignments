@@ -7,9 +7,9 @@ import sys
 import itertools
 import traceback
 
-from cs202_support.base_ast import print_ast
+from cs3020_support.base_ast import print_ast
 
-import cs202_support.x86exp as x86
+import cs3020_support.x86exp as x86
 import constants
 
 gensym_num = 0

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from cs202_support.base_ast import AST, RType
+from cs3020_support.base_ast import AST, RType
 from typing import List, Set, Dict, Tuple
 
 ##################################################
