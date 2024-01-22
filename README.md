@@ -12,18 +12,6 @@ Please [click
 here](https://github.com/jnear/cs211-data-privacy/blob/master/jupyter.md)
 for information on installing Conda and setting up Jupyter notebooks.
 
-## Installing Python with Homebrew
-
-Homebrew is an open source package manager for MacOS. To install homebrew run their installation command on your terminal. You can find 
-the command on their [website](https://brew.sh/)
-
-Once you have homebrew to installed, you can install any version of python using their CLI. In this case I am installing version 3.10 other 
-versions are also supported, you can find more information in the [python formulae](https://docs.brew.sh/Homebrew-and-Python)
-
-```bash
-brew install python@3.10
-```
-
 ## Creating the CS 3020 Environment
 
 Python version 3.10 is required for CS 3020 (to support pattern
@@ -216,6 +204,18 @@ and then try installing Jupyter again.
   - Try an example in the online compiler
   - Try an example on paper
   - Re-do the relevant exercise questions
+
+## Installing Python with Homebrew (Optional, Mac-only)
+
+Homebrew is an open source package manager for MacOS. To install homebrew run their installation command on your terminal. You can find 
+the command on their [website](https://brew.sh/)
+
+Once you have homebrew to installed, you can install any version of python using their CLI. In this case I am installing version 3.10 other 
+versions are also supported, you can find more information in the [python formulae](https://docs.brew.sh/Homebrew-and-Python)
+
+```bash
+brew install python@3.10
+```
 
 ## Building the Runtime (Optional)
 
