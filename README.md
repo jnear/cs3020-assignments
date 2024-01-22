@@ -45,12 +45,36 @@ You can install the support code for CS 3020 using `pip`:
 2. Activate the Conda env: `conda activate cs3020`
 3. Install the code: `pip install git+https://github.com/jnear/cs3020-assignments.git`
 
-Alternatively, if you have cloned the repository on your computer:
+## Downloading the Assignment Code
 
-1. Open a terminal with Conda support (as above)
-2. Activate the Conda env: `conda activate cs3020`
-3. Navigate to the `cs3020-assignments` directory (e.g. using the `cd` command)
-4. Install the code: `pip install .`
+This repository contains the assignment code and in-class exercises.
+You need to download the files in this repository to your computer in
+order to complete the assignments. 
+
+**Option 1: clone the repository**
+
+1. Open a terminal
+2. Navigate to the directory that should hold your copy of the repo (e.g. `cd Downloads`)
+3. Type `git clone https://github.com/jnear/cs3020-assignments.git`
+
+To update your copy of the repo with new files, navigate to the repo
+on your computer and type `git pull`.
+
+**Option 2: download a zip file**
+
+1. Click the green "code" button at the top of this page
+2. Select "download zip" from the box that pops up
+3. Extract the zip file somewhere on your computer
+
+## Starting Jupyter Notebook
+
+1. Open a terminal (MacOS or Linux) or the Anaconda Prompt (Windows)
+2. Navigate to the `cs3020-assignments` directory
+3. Activate the CS 3020 environment by typing `conda activate cs3020`
+4. Start Jupyter notebook by typing `jupyter notebook`
+
+If you get a "command not found" error, try installing Jupyter by
+typing `pip install jupyter`, then try the steps above again.
 
 ## Installing and Using PyCharm
 
@@ -58,58 +82,29 @@ I recommend using the PyCharm "community edition" to edit your
 assignment code code. PyCharm supports Python 3's static type hints,
 and can help you avoid difficult-to-debug errors when implementing
 your compiler. You can find information on downloading and installing
-it [at this link](https://www.jetbrains.com/pycharm/download/).
+it [at this
+link](https://www.jetbrains.com/pycharm/download/other.html). Make
+sure you download the **Community Edition** (the non-paid version).
 
 You can set up PyCharm to work with your Conda environment as follows:
 
 1. Click the "open" button in PyCharm to open a project
-2. Select the directory where you checked out this repo (if you're
-   asked to create a virtual env, click "cancel")
+2. Select the `cs3020-assignments` directory you created using the
+   steps "Downloading the Assignment Code" above. If you're asked to
+   create a virtual env, click "cancel."
 3. Open Settings (File -> Settings, or PyCharm -> Preferences on MacOS)
 4. Open the "Project: cs3020-assignments" -> "Python Interpreter"
    section of the settings
-5. Click the settings gear icon next to the "Python Interpreter"
-   drop-down box, and click "Add"
-6. On the left side, select "Conda Environment"
-7. Click the "Existing Environment" option
-8. In the "Interpreter" drop-down, pick the cs3020 environment that you
-   created earlier
-9. Click "OK" twice
+5. Click the "Python Interpreter" drop-down box, and click "Show All"
+6. On the left side, click the plus icon (+) to add an interpreter.
+7. On the left side, select "Conda Environment"
+8. In the "Conda Executable" box, insert the path to the `conda`
+   executable on your computer (if it's not already there).
+9. Click the "Use Existing Environment" option
+10. In the "Use Existing Environment" drop-down, pick the cs3020
+   environment that you created earlier
+11. Click "OK" three times
    
-If the cs3020 environment doesn't appear (step 8), click the "open"
-button next to the drop-down and select the Python executable in the
-cs3020 environment. You can find its location by typing `conda env
-list` at a Conda-enabled terminal. This command lists all environments
-and their location. The Python executable for an environment can be
-found at `bin/python` in that environment's directory.
-
-## Building the Runtime
-
-We will test our x86 assembly code using both an emulator and direct
-execution on your hardware. To assemble your code into a binary,
-you'll need a runtime system. The runtime is implemented in C, in the
-file `runtime.c`. You can compile the runtime into an object file
-(`runtime.o`) as follows:
-
-```
-gcc -c -g -std=c99 runtime.c
-```
-
-This will produce a file named `runtime.o`. The -g flag is to tell the
-compiler to produce debug information that you may need to use the gdb
-(or lldb) debugger.
-
-Next, suppose your compiler has produced the x86 assembly program file
-`foo.s` (the `.s` filename extension is the standard one for assembly
-programs). To produce an executable program, you can then run:
-
-```
-gcc -g runtime.o foo.s
-```
-
-which will produce the executable program named `a.out` by linking
-your program with the runtime.
-
 ## Running the Compiler & Tests
 
 To compile a program into an assembly file, navigate to the directory
@@ -121,17 +116,6 @@ python compiler.py tests/test1.py
 ```
 
 will produce the file `tests/test1.py.s`.
-
-To run your compiled program, first use GCC to assemble it into a
-binary, then run the resulting binary (which will be called `a.out`):
-
-```
-gcc -g ../runtime.o tests/test1.py.s
-./a.out
-```
-
-The process above runs a single program and allows you to view its
-output.
 
 To run all of the tests, navigate to the directory containing the
 compiler implementation and run `run_tests.py`. For example:
@@ -232,3 +216,41 @@ and then try installing Jupyter again.
   - Try an example in the online compiler
   - Try an example on paper
   - Re-do the relevant exercise questions
+
+## Building the Runtime (Optional)
+
+We will test our x86 assembly code using both an emulator and direct
+execution on your hardware. To assemble your code into a binary,
+you'll need a runtime system. The runtime is implemented in C, in the
+file `runtime.c`. You can compile the runtime into an object file
+(`runtime.o`) as follows:
+
+```
+gcc -c -g -std=c99 runtime.c
+```
+
+This will produce a file named `runtime.o`. The -g flag is to tell the
+compiler to produce debug information that you may need to use the gdb
+(or lldb) debugger.
+
+Next, suppose your compiler has produced the x86 assembly program file
+`foo.s` (the `.s` filename extension is the standard one for assembly
+programs). To produce an executable program, you can then run:
+
+```
+gcc -g runtime.o foo.s
+```
+
+which will produce the executable program named `a.out` by linking
+your program with the runtime.
+
+To run a compiled program, first use GCC to assemble it into a
+binary, then run the resulting binary (which will be called `a.out`):
+
+```
+gcc -g ../runtime.o tests/test1.py.s
+./a.out
+```
+
+The process above runs a single program and allows you to view its
+output.
