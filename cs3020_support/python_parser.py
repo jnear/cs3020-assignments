@@ -29,7 +29,6 @@ def parse(s):
             case ast.Module(stmts):
                 return Program(trans_stmts(stmts))
             case _:
-                print(print_ast(e))
                 raise Exception('trans_prog', e)
     def trans_stmts(stmts):
         return [trans_stmt(s) for s in stmts]
@@ -52,6 +51,8 @@ def parse(s):
                           trans_stmts(stmts2))
             case ast.While(condition, stmts, []):
                 return While(trans_expr(condition), trans_stmts(stmts))
+            case ast.For(ast.Name(x), it, body):
+                return For(x, trans_expr(it), trans_stmts(body))
             case ast.Return(e1):
                 return Return(trans_expr(e1))
             case ast.FunctionDef(name, args, stmts, _, typ, _):
@@ -69,7 +70,6 @@ def parse(s):
                 new_decls = [] if ast.Pass() in decls else [trans_classdef(d) for d in decls]
                 return ClassDef(name, x, new_decls)
             case _:
-                print(print_ast(s))
                 raise Exception('trans_stmt', s)
     def trans_expr(e):
         match e:
@@ -102,7 +102,6 @@ def parse(s):
             case ast.Attribute(e1, f):
                 return FieldRef(trans_expr(e1), f)
             case _:
-                print(print_ast(e))
                 raise Exception('trans_expr', e)
 
     python_ast = ast.parse(s)

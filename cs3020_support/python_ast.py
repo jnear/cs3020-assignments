@@ -49,6 +49,12 @@ class While(Stmt):
     body: List[Stmt]
 
 @dataclass(frozen=True, eq=True)
+class For(Stmt):
+    name: str
+    iterator: Expr
+    body: List[Stmt]
+
+@dataclass(frozen=True, eq=True)
 class FunctionDef(Stmt):
     name: str
     params: List[Tuple[str, type]]

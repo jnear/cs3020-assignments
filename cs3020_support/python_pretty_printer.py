@@ -36,6 +36,10 @@ def print_program(p):
                 b = '\n'.join([print_stmt(s, indent+4) for s in stmts])
                 return '\n'.join([' '*indent + f'while {print_expr(e1)}:',
                                   b])
+            case For(x, e1, stmts):
+                b = '\n'.join([print_stmt(s, indent+4) for s in stmts])
+                return '\n'.join([' '*indent + f'for {x} in {print_expr(e1)}:',
+                                  b])
             case FunctionDef(name, params, body, return_type):
                 b = '\n'.join([print_stmt(s, indent+4) for s in body])
                 params_s = ', '.join([f'{x}: {print_type(t)}' for x, t in params])
