@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='cs3020_support',
-      version='0.6',
+      version='0.7',
       description='Support code for CS 3020: compiler construction',
       url='http://github.com/jnear/cs3020-assignments',
       author='Joe Near',

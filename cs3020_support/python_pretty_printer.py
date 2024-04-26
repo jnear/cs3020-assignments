@@ -14,6 +14,8 @@ def print_program(p):
             return a
         elif isinstance(a, tuple):
             return '(' + ', '.join([print_type(t) for t in a]) + ')'
+        elif a is None:
+            return 'None'
         else:
             raise Exception('print_type', a)
 

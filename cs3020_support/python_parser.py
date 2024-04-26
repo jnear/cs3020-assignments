@@ -21,6 +21,8 @@ def parse(s):
                 return tuple([get_type(a) for a in args])
             case ast.Name(x):
                 return x
+            case None:
+                return None
             case _:
                 raise Exception('get_type', ast.dump(a))
 
