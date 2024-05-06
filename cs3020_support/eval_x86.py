@@ -195,6 +195,18 @@ class X86Emulator:
                 v = self.eval_arg(a1)
                 self.store_arg(a2, v)
 
+            elif instr.data == 'salq':
+                a1, a2 = instr.children
+                v1 = self.eval_arg(a1)
+                v2 = self.eval_arg(a2)
+                self.store_arg(a2, v2 << v1)
+
+            elif instr.data == 'sarq':
+                a1, a2 = instr.children
+                v1 = self.eval_arg(a1)
+                v2 = self.eval_arg(a2)
+                self.store_arg(a2, v2 >> v1)
+
             elif instr.data == 'addq':
                 a1, a2 = instr.children
                 v1 = self.eval_arg(a1)
@@ -487,6 +499,22 @@ conclusion:
  retq
 """
 
+prog6 = """
+ .globl main
+main:
+ movq $4, %rdi
+ salq $1, %rdi
+ callq print_int
+ sarq $1, %rdi
+ callq print_int
+ movq $0, %rdi
+ sarq $1, %rdi
+ callq print_int
+ movq $1, %rdi
+ sarq $1, %rdi
+ callq print_int
+"""
+
 instrs = ['movq $1, %rax',
           'addq $2, %rax',
           'addq $3, %rax',
@@ -494,7 +522,7 @@ instrs = ['movq $1, %rax',
           'movq $42, (%rax)']
 
 if __name__ == "__main__":
-    for prog in prog1, prog2, prog3, prog4, prog5:
+    for prog in prog1, prog2, prog3, prog4, prog5, prog6:
         emu = X86Emulator(logging=True)
         emu.eval_program(prog)
 

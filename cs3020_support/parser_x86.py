@@ -9,6 +9,8 @@ x86_parser = Lark(r"""
           | "subq" arg "," arg -> subq
           | "cmpq" arg "," arg -> cmpq
           | "xorq" arg "," arg -> xorq
+          | "salq" arg "," arg -> salq
+          | "sarq" arg "," arg -> sarq
           | "leaq" arg "," arg -> leaq
           | "negq" arg -> negq
           | "jmp" CNAME -> jmp
