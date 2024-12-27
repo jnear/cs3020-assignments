@@ -8,7 +8,9 @@ from dataclasses import dataclass
 from typing import List, Set, Dict, Tuple, Any
 from .python import AST
 
-# arg
+# ==================================================
+# Arguments
+# ==================================================
 @dataclass(frozen=True, eq=True)
 class Arg(AST):
     pass
@@ -46,15 +48,70 @@ class Deref(Arg):
     reg: str
     offset: int
 
-# instr
+# ==================================================
+# Instructions
+# ==================================================
 @dataclass(frozen=True, eq=True)
 class Instr(AST):
     pass
 
 @dataclass(frozen=True, eq=True)
-class NamedInstr(Instr):
-    instr: str
-    args: List[Arg]
+class Addq(Instr):
+    a1: Arg
+    a2: Arg
+
+@dataclass(frozen=True, eq=True)
+class Subq(Instr):
+    a1: Arg
+    a2: Arg
+
+@dataclass(frozen=True, eq=True)
+class Imulq(Instr):
+    a1: Arg
+    a2: Arg
+
+@dataclass(frozen=True, eq=True)
+class Movq(Instr):
+    a1: Arg
+    a2: Arg
+
+@dataclass(frozen=True, eq=True)
+class Movzbq(Instr):
+    a1: Arg
+    a2: Arg
+
+@dataclass(frozen=True, eq=True)
+class Cmpq(Instr):
+    a1: Arg
+    a2: Arg
+
+@dataclass(frozen=True, eq=True)
+class Andq(Instr):
+    a1: Arg
+    a2: Arg
+
+@dataclass(frozen=True, eq=True)
+class Orq(Instr):
+    a1: Arg
+    a2: Arg
+
+@dataclass(frozen=True, eq=True)
+class Xorq(Instr):
+    a1: Arg
+    a2: Arg
+
+@dataclass(frozen=True, eq=True)
+class Leaq(Instr):
+    a1: Arg
+    a2: Arg
+
+@dataclass(frozen=True, eq=True)
+class Pushq(Instr):
+    a1: Arg
+
+@dataclass(frozen=True, eq=True)
+class Popq(Instr):
+    a1: Arg
 
 @dataclass(frozen=True, eq=True)
 class Callq(Instr):
@@ -88,11 +145,18 @@ class Set(Instr):
 class Retq(Instr):
     pass
 
+# ==================================================
+# Program
+# ==================================================
+
 @dataclass(frozen=True, eq=True)
 class X86Program(AST):
     blocks: Dict[str, List[Instr]]
     stack_space: int = None
 
+# ==================================================
+# Utility Functions
+# ==================================================
 
 def print_x86(program: X86Program) -> str:
     """
@@ -120,9 +184,30 @@ def print_x86(program: X86Program) -> str:
 
     def print_instr(e: Instr) -> str:
         match e:
-            case NamedInstr(name, args):
-                arg_str = ', '.join([print_arg(a) for a in args])
-                return f'{name} {arg_str}'
+            case Addq(a1, a2):
+                return f'addq {print_arg(a1)}, {print_arg(a2)}'
+            case Subq(a1, a2):
+                return f'subq {print_arg(a1)}, {print_arg(a2)}'
+            case Imulq(a1, a2):
+                return f'imulq {print_arg(a1)}, {print_arg(a2)}'
+            case Movq(a1, a2):
+                return f'movq {print_arg(a1)}, {print_arg(a2)}'
+            case Movzbq(a1, a2):
+                return f'movzbq {print_arg(a1)}, {print_arg(a2)}'
+            case Cmpq(a1, a2):
+                return f'cmpq {print_arg(a1)}, {print_arg(a2)}'
+            case Andq(a1, a2):
+                return f'andq {print_arg(a1)}, {print_arg(a2)}'
+            case Orq(a1, a2):
+                return f'orq {print_arg(a1)}, {print_arg(a2)}'
+            case Xorq(a1, a2):
+                return f'xorq {print_arg(a1)}, {print_arg(a2)}'
+            case Leaq(a1, a2):
+                return f'leaq {print_arg(a1)}, {print_arg(a2)}'
+            case Pushq(a1):
+                return f'pushq {print_arg(a1)}'
+            case Popq(a1):
+                return f'popq {print_arg(a1)}'
             case Callq(label):
                 return f'callq {label}'
             case IndirectCallq(a1, _):
